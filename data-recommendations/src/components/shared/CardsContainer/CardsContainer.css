@@ -1,0 +1,16 @@
+.card-container-main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 0px;
+  padding: 10px;
+}
+.cards-map {
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f3f3f3, #eaeaea);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}

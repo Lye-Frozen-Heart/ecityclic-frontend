@@ -1,52 +1,153 @@
 .breadcrumb-main {
   display: flex;
   flex-direction: row;
-  color: var(--clr-white);
+  color: white;
   width: 100%;
-  height: 10vh;
-  justify-content: start;
-  font-family: var(--font-family-heading);
+  height: 60px; /* Ajusta la altura para que coincida con la imagen */
+  font-family: Arial, sans-serif; /* Asegúrate de usar una fuente estándar similar */
 }
+
+/* Primera sección (links e ítems) */
 .first-section {
-  background-color: var(--clr-dark);
+  background-color: #333333; /* Color de fondo oscuro */
   flex: 70%;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
+
 .breadcrumb-item {
-  display: flex; /* Permite centrar contenido si es necesario */
+  display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none; /* Sin decoración de texto */
-  padding: 0 10px;
-  flex: 10%;
-  /* Espaciado entre los elementos */
+  padding: 0 15px; /* Espaciado horizontal */
+  font-size: 0.9em;
+  text-transform: uppercase;
+  text-decoration: none; /* Sin subrayado */
+  color: white; /* Color del texto */
+  gap: 5px;
+  z-index: 100;
 }
-.paeria-title {
-  font-weight: 700;
-  font-size: 1.5em;
-  margin: 0 0 0 2%;
-}
-.first-section .paeria-title:hover {
-  color: var(--clr-primary);
-  transition: 0.5s;
+.breadcrumb-item:not(.paeria-title):not(.ajuda):hover {
+  background-color: #d4001a; /* Rojo intenso */
+  color: white; /* Texto blanco */
+  font-weight: bold;
+  text-align: center;
+  height: 100%; /* Ocupa toda la altura del contenedor */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
 }
 
-.background-primary {
+/* Estilo para AJUDA */
+.ajuda {
+  background-color: #d4001a; /* Rojo intenso */
+  color: white; /* Texto blanco */
+  font-weight: bold;
+  text-align: center;
+  height: 100%; /* Ocupa toda la altura del contenedor */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Título principal */
+.paeria-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-right: 35%;
+  flex-grow: 75;
+  text-transform: lowercase;
+  z-index: 100;
+}
+
+/* Hover para enlaces */
+.paeria-title:hover {
+  color: var(--clr-primary);
+  transition: color 0.3s ease;
+}
+/* Segunda sección (fecha y hora) */
+.second-section {
+  background-color: #57565b; /* Color gris oscuro */
+  flex: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+}
+
+.breadcrumb-item.idioma {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espaciado entre el texto y la flecha */
+}
+
+.dropdown-trigger {
+  cursor: pointer;
+  color: white;
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+.dropdown-arrow {
+  display: inline-block;
+  transform: rotate(0deg); /* Posición inicial hacia abajo */
+  transition: transform 0.3s ease; /* Transición suave */
+  color: white;
+  font-size: 0.8em;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg); /* Gira hacia arriba */
+}
+
+:where(.css-dev-only-do-not-override-1x0dypw).ant-dropdown .ant-dropdown-menu {
+  background-color: #57565b;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: block;
+  top: 20px;
+  right: 6.3vw;
+  border-radius: 0px;
+  width: 15vw;
+}
+:where(.css-dev-only-do-not-override-1x0dypw).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item:hover,
+:where(.css-dev-only-do-not-override-1x0dypw).ant-dropdown-menu-submenu
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item:hover,
+:where(.css-dev-only-do-not-override-1x0dypw).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-submenu-title:hover,
+:where(.css-dev-only-do-not-override-1x0dypw).ant-dropdown-menu-submenu
+  .ant-dropdown-menu
+  .ant-dropdown-menu-submenu-title:hover,
+:where(.css-dev-only-do-not-override-1x0dypw).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item-active,
+:where(.css-dev-only-do-not-override-1x0dypw).ant-dropdown-menu-submenu
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item-active,
+:where(.css-dev-only-do-not-override-1x0dypw).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-submenu-title-active,
+:where(.css-dev-only-do-not-override-1x0dypw).ant-dropdown-menu-submenu
+  .ant-dropdown-menu
+  .ant-dropdown-menu-submenu-title-active {
   background-color: var(--clr-primary);
 }
-.second-section {
-  background-color: #57565b;
-  flex: 40%;
-}
-
-/* Estilo específico para AJUDA */
-.breadcrumb-item.ajuda {
-  background-color: var(--clr-primary); /* Fondo rojo */
-  color: white; /* Texto blanco para contraste */
-  flex: 1; /* Ocupa todo el espacio disponible */
-  width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
-  height: 100%; /* Ocupa toda la altura del breadcrumb */
-  text-align: center;
-  font-weight: bold;
+:where(.css-dev-only-do-not-override-1x0dypw).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item,
+:where(.css-dev-only-do-not-override-1x0dypw).ant-dropdown-menu-submenu
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item,
+:where(.css-dev-only-do-not-override-1x0dypw).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-submenu-title,
+:where(.css-dev-only-do-not-override-1x0dypw).ant-dropdown-menu-submenu
+  .ant-dropdown-menu
+  .ant-dropdown-menu-submenu-title {
+  color: white !important;
 }

@@ -1,0 +1,61 @@
+.div-search {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.subtitle {
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  color: var(--clr-dark);
+  line-height: 1.2;
+  font-size: 2.8rem;
+  width: 100%;
+}
+:where(.css-dev-only-do-not-override-1x0dypw).ant-btn-variant-solid:not(
+    :disabled
+  ):not(.ant-btn-disabled) {
+  background: var(--clr-primary);
+}
+:where(.css-dev-only-do-not-override-1x0dypw).ant-btn-variant-solid:not(
+    :disabled
+  ):not(.ant-btn-disabled):hover {
+  background: var(--clr-link-hover);
+}
+
+:where(.css-dev-only-do-not-override-1x0dypw).ant-input-outlined:hover {
+  border-color: white !important;
+  background-color: #ffffff;
+}
+:where(.css-dev-only-do-not-override-1x0dypw).ant-input-outlined:focus {
+  border-color: white !important;
+  background-color: #ffffff;
+}
+/* Los estilos existentes para el componente */
+.subtitle {
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: #333; /* Color predeterminado */
+  margin-top: 15px;
+}
+
+/* Subtítulo animado */
+.subtitle {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+/* Definición de la animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
