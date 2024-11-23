@@ -1,0 +1,38 @@
+:root {
+  --clr-white: #ffffff;
+  --clr-black: #111111;
+  --clr-light: #f2f2f2;
+  --clr-dark-hover: #2c2b2e;
+  --clr-dark: #37363b;
+  --clr-primary: #b50027;
+  --clr-primary-dark-minimum: #b30027;
+  --clr-contrast: #ffffff;
+  --clr-secondary: #b50027;
+  --clr-secondary_contrast: #ffffff;
+  --clr-gray: #f2f2f2;
+  --clr-link-hover: #82001c;
+  --clr-topBar: var(--clr-dark);
+  --clr-topBar-contrast: var(--clr-contrast);
+  --clr-dark-gray: color-mix(in srgb, var(--clr-gray) 90%, black);
+  --clr-text-success: #3c763d;
+  --font-family: "Open Sans", sans-serif;
+  --font-family-heading: "Palanquin", sans-serif;
+  --text-color: var(--clr-dark);
+  --text-darken: #212121;
+  --clr-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  --padding-y-header1: 1em 0;
+  --border-radius-xl: 32px;
+  --border-radius-lg: 24px;
+  --border-radius-md: 16px;
+  --border-radius-sm: 8px;
+  --border-radius-xs: 4px;
+  --font-size-base: 16px;
+  --spacing-desktop-xl: 5rem;
+  --spacing-desktop: 50px;
+  --spacing-mobile: 16px;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

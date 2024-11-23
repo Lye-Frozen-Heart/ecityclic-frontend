@@ -1,12 +1,9 @@
 //import { useState } from "react";
 import "./App.css";
+import AppProvider from "./components/providers/AppProvider/AppProvider";
 
 function App() {
-  return (
-    <>
-      <div style={{ display: "flex", justifyContent: "center" }}>HOLA</div>
-    </>
-  );
+  return <AppProvider />;
 }
 
 export default App;

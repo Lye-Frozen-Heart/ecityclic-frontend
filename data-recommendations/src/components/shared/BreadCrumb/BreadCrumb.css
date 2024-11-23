@@ -1,0 +1,52 @@
+.breadcrumb-main {
+  display: flex;
+  flex-direction: row;
+  color: var(--clr-white);
+  width: 100%;
+  height: 10vh;
+  justify-content: start;
+  font-family: var(--font-family-heading);
+}
+.first-section {
+  background-color: var(--clr-dark);
+  flex: 70%;
+  display: flex;
+  flex-direction: row;
+}
+.breadcrumb-item {
+  display: flex; /* Permite centrar contenido si es necesario */
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* Sin decoración de texto */
+  padding: 0 10px;
+  flex: 10%;
+  /* Espaciado entre los elementos */
+}
+.paeria-title {
+  font-weight: 700;
+  font-size: 1.5em;
+  margin: 0 0 0 2%;
+}
+.first-section .paeria-title:hover {
+  color: var(--clr-primary);
+  transition: 0.5s;
+}
+
+.background-primary {
+  background-color: var(--clr-primary);
+}
+.second-section {
+  background-color: #57565b;
+  flex: 40%;
+}
+
+/* Estilo específico para AJUDA */
+.breadcrumb-item.ajuda {
+  background-color: var(--clr-primary); /* Fondo rojo */
+  color: white; /* Texto blanco para contraste */
+  flex: 1; /* Ocupa todo el espacio disponible */
+  width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+  height: 100%; /* Ocupa toda la altura del breadcrumb */
+  text-align: center;
+  font-weight: bold;
+}
