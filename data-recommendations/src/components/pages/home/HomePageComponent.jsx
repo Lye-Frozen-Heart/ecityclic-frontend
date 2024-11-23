@@ -10,9 +10,15 @@ import CardsContainer from "../../shared/CardsContainer/CardsContainer.jsx";
 const HomePageComponent = () => {
   const [inputValue, setInputValue] = useState(null);
   const [showSubtitle, setShowSubtitle] = useState(false);
+  const [idioma, setIdioma] = useState("ca"); // Estado para el idioma
 
   const handleInputValue = (value) => {
     setInputValue(value);
+  };
+
+  // Callback para cambiar el idioma
+  const handleIdiomaChange = (newIdioma) => {
+    setIdioma(newIdioma); // Actualiza el idioma
   };
 
   // Efecto para mostrar lentamente el subtítulo
@@ -28,9 +34,16 @@ const HomePageComponent = () => {
     }
   }, [inputValue]);
 
+  // Textos del placeholder dependiendo del idioma
+  const textosPlaceholder = {
+    ca: "Llicencia d'obres, concursos, calendari fiscal...",
+    es: "Licencia de obras, concursos, calendario fiscal...",
+  };
+
   return (
     <>
-      <BreadCrumb />
+      <BreadCrumb onIdiomaChange={handleIdiomaChange} />{" "}
+      {/* Pasamos el callback */}
       <div
         className="div-search"
         style={{ backgroundImage: `url("${SearchImage}")` }}
@@ -44,18 +57,10 @@ const HomePageComponent = () => {
           <Input
             prefix={<FontAwesomeIcon size="2x" icon={faSearch} />}
             onChange={(e) => handleInputValue(e.target.value)}
-            placeholder="Llicencia d'obres,concursos,calendari fiscal..."
+            placeholder={textosPlaceholder[idioma]}
             style={{ padding: "0.7em 0.6em", fontSize: "1rem" }}
           />
-          <Button
-            type="primary"
-            style={{
-              height: "auto",
-              padding: "20px",
-              fontWeight: 500,
-              fontSize: "0.9em",
-            }}
-          >
+          <Button type="primary" className="button-input">
             BUSCAR
           </Button>
         </Space.Compact>

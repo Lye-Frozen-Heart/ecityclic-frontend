@@ -17,18 +17,18 @@ export default [
         sourceType: "module",
       },
     },
-    settings: { react: { version: "18.3" } },
+    settings: { react: { version: "detect" } }, // Detectar automáticamente la versión de React
     plugins: {
       react,
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
     },
     rules: {
-      "react/prop-types": "off",
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...react.configs["jsx-runtime"].rules,
       ...reactHooks.configs.recommended.rules,
+      "react/prop-types": "off", // Asegúrate de que esta regla esté desactivada
       "react/jsx-no-target-blank": "off",
       "react-refresh/only-export-components": [
         "warn",

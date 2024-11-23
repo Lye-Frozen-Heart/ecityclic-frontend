@@ -6,11 +6,14 @@ import {
   faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-import { Dropdown, Menu } from "antd";
+import { Dropdown } from "antd";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons/faAngleDown";
 
-const BreadCrumb = () => {
-  // Función para obtener la fecha y hora oficial
+const BreadCrumb = ({ onIdiomaChange }) => {
+  const [idioma, setIdioma] = useState("ca");
+  const [hour, setHour] = useState("");
+
+  // Función para obtener la fecha y hora según el idioma
   const obtenerFechaHoraOficial = () => {
     const opcionesFecha = {
       weekday: "long",
@@ -23,45 +26,32 @@ const BreadCrumb = () => {
       minute: "2-digit",
       second: "2-digit",
     };
+
     const ahora = new Date();
-    const fecha = ahora.toLocaleDateString("ca-ES", opcionesFecha);
-    const hora = ahora.toLocaleTimeString("ca-ES", opcionesHora);
-    return `Data i hora oficial: ${fecha}, ${hora}`;
+    const fecha = ahora.toLocaleDateString(
+      idioma === "ca" ? "ca-ES" : "es-ES",
+      opcionesFecha
+    );
+    const hora = ahora.toLocaleTimeString(
+      idioma === "ca" ? "ca-ES" : "es-ES",
+      opcionesHora
+    );
+
+    return idioma === "ca"
+      ? `Data i hora oficial: ${fecha}, ${hora}`
+      : `Fecha y hora oficial: ${fecha}, ${hora}`;
   };
 
-  // Estado para almacenar la hora actual
-  const [hour, setHour] = useState(obtenerFechaHoraOficial());
-
-  // Estado para gestionar el idioma
-  const [idioma, setIdioma] = useState("ca");
-
-  // Estado para gestionar el despliegue del menú
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  // useEffect para actualizar la hora cada segundo
+  // Actualizar la hora cada segundo
   useEffect(() => {
     const interval = setInterval(() => {
       setHour(obtenerFechaHoraOficial());
     }, 1000);
-
+    // Limpiar el intervalo al desmontar el componente
     return () => clearInterval(interval);
-  }, []);
+  }, [idioma]); // Recalcular la hora al cambiar el idioma
 
-  // Opciones del menú desplegable
-  const menu = (
-    <Menu
-      onClick={(e) => {
-        setIdioma(e.key);
-        setIsDropdownOpen(false); // Cerrar menú al seleccionar
-      }}
-      items={[
-        { key: "ca", label: "Català" },
-        { key: "es", label: "Español" },
-      ]}
-    />
-  );
-
-  // Textos dependiendo del idioma seleccionado
+  // Configuración de los textos según idioma
   const textos = {
     ca: {
       paeria: "paeria.cat",
@@ -77,13 +67,23 @@ const BreadCrumb = () => {
     },
   };
 
+  const items = [
+    { key: "ca", label: <a>Català</a> },
+    { key: "es", label: <a>Castellano</a> },
+  ];
+
+  // Manejar el cambio de idioma
+  const handleIdiomaChange = (e) => {
+    setIdioma(e.key);
+    onIdiomaChange(e.key);
+  };
+
   return (
     <div className="breadcrumb-main">
       <div className="first-section">
         <span className="breadcrumb-item paeria-title">
           {textos[idioma].paeria}
         </span>
-
         <span className="breadcrumb-item ajuda">
           <FontAwesomeIcon icon={faQuestionCircle} /> {textos[idioma].ajuda}
         </span>
@@ -91,19 +91,15 @@ const BreadCrumb = () => {
           <FontAwesomeIcon icon={faCopy} /> {textos[idioma].validador}
         </span>
 
-        {/* Idioma con Dropdown */}
         <span className="breadcrumb-item idioma">
           <FontAwesomeIcon icon={faGlobe} /> {textos[idioma].idioma}
           <Dropdown
-            overlay={menu}
+            menu={{ items, onClick: handleIdiomaChange }}
             trigger={["click"]}
             placement="bottom"
-            onOpenChange={(open) => setIsDropdownOpen(open)}
           >
             <span className="dropdown-trigger">
-              <span
-                className={`dropdown-arrow ${isDropdownOpen ? "open" : ""}`}
-              >
+              <span className={`dropdown-arrow`}>
                 <FontAwesomeIcon icon={faAngleDown} size="1x" />
               </span>
             </span>

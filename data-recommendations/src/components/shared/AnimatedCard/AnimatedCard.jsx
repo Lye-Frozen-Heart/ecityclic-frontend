@@ -1,9 +1,9 @@
 import { Card } from "antd";
 import { useSpring, animated } from "@react-spring/web"; // Para animaciones
-
+import "./AnimatedCard.css";
 const { Meta } = Card;
 
-const AnimatedCard = ({ title, description, image }) => {
+const AnimatedCard = ({ title, description }) => {
   const springProps = useSpring({
     from: { opacity: 0, transform: "translateY(50px)" },
     to: { opacity: 1, transform: "translateY(0px)" },
@@ -16,11 +16,8 @@ const AnimatedCard = ({ title, description, image }) => {
         hoverable
         style={{
           width: 300,
-          margin: "10px",
-          borderRadius: "8px",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
         }}
-        cover={<img alt="example" src={image} />}
+        className="card-styles"
       >
         <Meta title={title} description={description} />
       </Card>
