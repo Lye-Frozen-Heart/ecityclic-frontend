@@ -34,7 +34,8 @@ export const useTramite = () => {
       if (
         !recommendationData ||
         recommendationData.error ||
-        recommendationData.status === 404
+        recommendationData.status === 404 || 
+        recommendationData.status === 500 
       ) {
         setError("Concept not found!");
         return;
@@ -43,7 +44,7 @@ export const useTramite = () => {
       return recommendationData;
     } catch (error) {
       console.error("Error al recoger las recomendaciones: ", error);
-      if (error.response && error.response.status === 404) {
+      if (error.response && error.response.status === 404 && error.response.status === 500 ) {
         setError("Concept not found!");
       } else {
         setError(error.message || "Error al obtener las recomendaciones");
