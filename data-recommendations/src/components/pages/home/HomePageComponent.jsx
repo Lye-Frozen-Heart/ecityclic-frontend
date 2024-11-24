@@ -15,7 +15,6 @@ const HomePageComponent = () => {
   const handleInputValue = (value) => {
     setInputValue(value);
   };
-
   // Callback para cambiar el idioma
   const handleIdiomaChange = (newIdioma) => {
     setIdioma(newIdioma); // Actualiza el idioma

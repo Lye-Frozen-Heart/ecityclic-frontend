@@ -24,9 +24,8 @@ const CardsContainer = ({ data }) => {
         : data?.map((item, index) => (
             <AnimatedCard
               key={index}
-              title={item.title}
-              description={item.description}
-              image={item.image}
+              title={item.Titol}
+              description={item.Descripcio}
             />
           ))}
     </div>
