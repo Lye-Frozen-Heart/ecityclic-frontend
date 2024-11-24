@@ -1,8 +1,7 @@
 const fetchData = async (url, method = "GET", body = null, params = null) => {
   try {
-    if (params && params != "" && params != null && params != undefined) {
+    if (params && params != "" && params != null && params != undefined)
       url += `${encodeURIComponent(params)}`;
-    }
 
     const options = {
       method,
