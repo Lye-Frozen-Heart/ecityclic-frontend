@@ -6,12 +6,12 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Button, Input, Space } from "antd";
 import { useState, useEffect } from "react";
 import CardsContainer from "../../shared/CardsContainer/CardsContainer.jsx";
-
+import { useTramite } from "../../../hooks/useTramite.jsx";
 const HomePageComponent = () => {
   const [inputValue, setInputValue] = useState(null);
   const [showSubtitle, setShowSubtitle] = useState(false);
   const [idioma, setIdioma] = useState("ca"); // Estado para el idioma
-
+  const { handleGetRecomendations, recommendations } = useTramite();
   const handleInputValue = (value) => {
     setInputValue(value);
   };
@@ -33,7 +33,7 @@ const HomePageComponent = () => {
       setShowSubtitle(false);
     }
   }, [inputValue]);
-
+  console.log(inputValue);
   // Textos del placeholder dependiendo del idioma
   const textosPlaceholder = {
     ca: "Llicencia d'obres, concursos, calendari fiscal...",
@@ -60,7 +60,11 @@ const HomePageComponent = () => {
             placeholder={textosPlaceholder[idioma]}
             style={{ padding: "0.7em 0.6em", fontSize: "1rem" }}
           />
-          <Button type="primary" className="button-input">
+          <Button
+            type="primary"
+            className="button-input"
+            onClick={() => handleGetRecomendations(inputValue)}
+          >
             BUSCAR
           </Button>
         </Space.Compact>
@@ -72,7 +76,7 @@ const HomePageComponent = () => {
           </h2>
         )}
       </div>
-      <CardsContainer data={null} />
+      <CardsContainer data={recommendations} />
     </>
   );
 };
